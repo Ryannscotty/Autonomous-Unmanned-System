@@ -1,47 +1,31 @@
 
 # **UAS Top-Level Diagram**
-
 <img width="1251" height="810" alt="UAS Top Level" src="https://github.com/user-attachments/assets/6fdc9972-4499-48d8-96c8-2671672261f2" />
-
-
-## Why this exists
-
-This project was built to mirror the firmware architecture used in production UAS and avionics systems — the kind of concept-to-flight ownership that companies like Anduril, Shield AI, and Joby Aviation hire embedded engineers to do. It deliberately avoids reaching for off-the-shelf flight stacks (PX4, ArduPilot, Betaflight) in favor of writing the scheduler, sensor fusion, and control architecture from first principles, because that is where the actual engineering judgment lives.
-
-<img width="1514" height="963" alt="Drone diagram" src="https://github.com/user-attachments/assets/a252c92d-16fa-4429-a04a-f04903e216d0" />
-
 The companion ground station (HTML/JS GCS with a live mission planning) and the FPGA/SDR telemetry link this firmware is designed to pair with live in separate repos — see [Related work](#related-work).
 
-> **Project status: core firmware infrastructure in progress , drivers in progress.** See [Implementation status](#implementation-status) below for exactly what runs today versus what's stubbed.
+## Why this exists
+This project was built to mirror the firmware architecture used in production UAS and avionics systems — the kind of concept-to-flight ownership that companies like Anduril, Shield AI, and Joby Aviation hire embedded engineers to do. It deliberately avoids reaching for off-the-shelf flight stacks (PX4, ArduPilot, Betaflight) in favor of writing the scheduler, sensor fusion, and control architecture from first principles, because that is where the actual engineering judgment lives.
+<img width="1514" height="963" alt="Drone diagram" src="https://github.com/user-attachments/assets/a252c92d-16fa-4429-a04a-f04903e216d0" />
 
 # Bare-metal STM32H7 Flight Controller
-
 A from-scratch flight controller firmware stack for the STM32H743 — a cooperative SysTick scheduler with hardware-backed fault detection, 9-DOF sensor fusion, and a graceful-degradation flight mode state machine.
-
 <img width="1567" height="970" alt="Flight Controller" src="https://github.com/user-attachments/assets/add1e0f3-78e3-4968-a752-b1b474c120cf" />
-
+> **Project status: core firmware infrastructure in progress , drivers in progress.** See [Implementation status](#implementation-status) below for exactly what runs today versus what's stubbed.
 ---
-
 ## Build
 
 ### Prerequisites
 
 # Ubuntu / Debian
-sudo apt install gcc-arm-none-eabi cmake openocd
-```
 ### Build & flash
-
-```bash
+```
+sudo apt install gcc-arm-none-eabi cmake openocd
 mkdir build && cd build
 cmake --build build
 make -j$(nproc)
 make flash    # requires ST-Link V3 + OpenOCD
 ```
-
-Full build, debug, and timing-verification instructions are in [`README.md` inside `fc_firmware/`](fc_firmware/README.md) — including how to read scheduler statistics, interpret a watchdog-caused reset, and verify loop timing on an oscilloscope before connecting motors.
-
 ---
-
 ## Hardware target
 
 | Component | Part |
@@ -77,8 +61,6 @@ Sensor fusion runs as two cooperating filters: a 9-DOF Madgwick quaternion filte
 - **FPGA Video Feed link** - Custom Lattice MACHXO3LF FPGA board integrated with Sony IMX219 camera and RF Communication downlink *(link to repo)*
 🚧 Not yet written
 - **V4L2 Logitech C270 camera driver with OpenCV object detection integration** - using a Logitech C270 webcam to interface with a jetson nano over V4L2 camera driver running YOLO object detection algorithm. *(link to repo)*  
-🚧 in progress
-- **Flight Controller PCB** - custom flight controller for UAS quadracopter drone. *(link to repo)*
 🚧 in progress
 ---
 ##  Scheduler Architecture
@@ -126,14 +108,20 @@ Sensor fusion runs as two cooperating filters: a 9-DOF Madgwick quaternion filte
 | task_stubs.c`| ✅ Complete | provides a harmless no-op for every task callback not yet implemented, so the scheduler core can be flashed and verified on real hardware today, independent of the rest of the stack. |
 
 ---
-## Safety
-This is firmware for a system that can spin propellers at lethal speed. Before connecting motors:
 
+**FlightController PCB**
+
+*(diagram goes here)*
+
+---
+## Safety
+
+This is firmware for a system that can spin propellers at lethal speed. Before connecting motors:
 - Remove all propellers for every bench test until rate and attitude loops are verified stable.
 - Confirm `scheduler_get_stats().missed_deadlines == 0` after a 60-second bench run.
 - Verify the watchdog actually resets the MCU within the configured timeout by deliberately hanging a test task.
 - Confirm failsafe triggers correctly with the radio link physically disconnected before any flight test.
----
+
 ## Design decisions worth knowing about
 
 **Why a bare-metal scheduler instead of FreeRTOS.** A cooperative SysTick dispatcher gives full control over execution order and eliminates an entire class of priority-inversion and context-switch-jitter bugs that make PID tuning miserable to debug. Every task runs to completion, in a fixed table order, with execution time measured via the DWT cycle counter — you can put an oscilloscope on a single GPIO and see exactly what the CPU is doing at any microsecond. An RTOS earns its complexity when you have many independent, asynchronous workloads; a flight controller's control loops are not that — they are a small number of strictly periodic tasks with hard deadlines, which is exactly what a cooperative scheduler is built for.
@@ -143,3 +131,5 @@ This is firmware for a system that can spin propellers at lethal speed. Before c
 **Why the flight mode FSM degrades instead of refusing.** If LOITER is requested but GPS lock drops mid-flight, the FSM doesn't get stuck or fault — it walks down a degradation ladder (`LOITER → ALT_HOLD → STABILIZE → FAILSAFE`) until it finds the most capable mode the *currently healthy* sensors can actually support, and sends a status message explaining why. This check runs every tick against the *active* mode, not just at the moment of a mode-change request, because sensors fail mid-flight, not just at the moment a button is pressed.
 
 **Why the rate PID will read raw gyro, not the AHRS output.** (Implemented in the not-yet-written `pid.c`, documented here because it shapes the rest of the design.) The inner control loop needs the lowest possible latency; routing it through a filter — even a fast one — adds phase lag that directly degrades stability margin. Only the D-term gets a light PT1 low-pass, because differentiating raw gyro noise produces spikes a filter has no business being absent for.
+
+---
