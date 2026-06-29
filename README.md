@@ -1,8 +1,9 @@
 
 # **UAS Top-Level Diagram**
+
 <img width="1251" height="810" alt="UAS Top Level" src="https://github.com/user-attachments/assets/6fdc9972-4499-48d8-96c8-2671672261f2" />
 
-> The companion ground station (HTML/JS GCS with a live mission planning) and the FPGA/SDR telemetry link this firmware is designed to pair with live in separate repos — see [Related work](#related-work).
+ The companion ground station (HTML/JS GCS with a live mission planning) and the FPGA/SDR telemetry link this firmware is designed to pair with live in separate repos — see [Related work](#related-work).
 
 ## Why this exists
 This project was built to mirror the firmware architecture used in production UAS and avionics systems — the kind of concept-to-flight ownership that companies like Anduril, Shield AI, and Joby Aviation hire embedded engineers to do. It deliberately avoids reaching for off-the-shelf flight stacks (PX4, ArduPilot, Betaflight) in favor of writing the scheduler, sensor fusion, and control architecture from first principles, because that is where the actual engineering judgment lives.
