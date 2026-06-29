@@ -1,0 +1,2 @@
+/usr/bin/ar qc libperiph_subsystem.a CMakeFiles/periph_subsystem.dir/Drivers_2/Clocks.c.o CMakeFiles/periph_subsystem.dir/Drivers_2/I2C.c.o CMakeFiles/periph_subsystem.dir/Drivers_2/SPI.c.o
+/usr/bin/ranlib libperiph_subsystem.a

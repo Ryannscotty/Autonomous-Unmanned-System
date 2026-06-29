@@ -1,0 +1,2 @@
+/usr/bin/ar qc libUNITTEST_subsystem.a CMakeFiles/UNITTEST_subsystem.dir/HIL_UNIT_TEST/HIL_Clock_test.c.o
+/usr/bin/ranlib libUNITTEST_subsystem.a
