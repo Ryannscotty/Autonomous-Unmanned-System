@@ -121,7 +121,7 @@ Sensor fusion runs as two cooperating filters: a 9-DOF Madgwick quaternion filte
 
 #🚧 in progress
 
-see [`README.md` inside `FlightControllerHardware/`](FlightControllerHardware/README.md)
+see [View Flight Controller Hardware details](Flight%20Controller%20Hardware/)
 
 ---
 ## Safety
