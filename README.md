@@ -79,6 +79,7 @@ Sensor fusion runs as two cooperating filters: a 9-DOF Madgwick quaternion filte
 - **V4L2 Logitech C270 camera driver with OpenCV object detection integration** - using a Logitech C270 webcam to interface with a jetson nano over V4L2 camera driver running YOLO object detection algorithm. *(link to repo)*  
 🚧 in progress
 - **Flight Controller PCB** - custom flight controller for UAS quadracopter drone. *(link to repo)*
+
   🚧 in progress
 ---
 ##  Scheduler Architecture
