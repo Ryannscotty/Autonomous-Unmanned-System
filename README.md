@@ -1,4 +1,5 @@
 
+
 # **UAS Top-Level Diagram**
 
 <img width="1251" height="810" alt="UAS Top Level" src="https://github.com/user-attachments/assets/6fdc9972-4499-48d8-96c8-2671672261f2" />
@@ -46,8 +47,9 @@ make flash    # requires ST-Link V3 + OpenOCD
 
 ---
 ## Sensor Fusion
-Sensor fusion runs as two cooperating filters: a 9-DOF Madgwick quaternion filter (gyro + accelerometer + magnetometer) for attitude estimation + Extended Kalman Filter (alt-esti + baro + GPS)
-*(Diagram goes here)*
+Sensor fusion runs as two cooperating filters: a 9-DOF Madgwick quaternion filter (gyro + accelerometer + magnetometer) + complementary filter (linear z-axis acceleration + barometer) + Kalman filter ( GPS).
+
+<img width="1223" height="873" alt="Sensor Fusion" src="https://github.com/user-attachments/assets/5cc8959a-407c-4550-a99e-e9fae534709c" />
 
 ---
 ## Cascading PID Controller
