@@ -38,7 +38,7 @@ make flash    # requires ST-Link V3 + OpenOCD
 | Barometer | BMP388 |
 | GPS | u-blox NEO-M9N |
 | ESCs | commercial board |
-| FPGA | Lattice Machxo3lf |
+| FPGA | Lattice MACHXO3LF |
 | 25MP Cam | Sony IMX219 |
 | SDR RF transceiver | Adalm Pluto |
 | OS | Jetson nano |
