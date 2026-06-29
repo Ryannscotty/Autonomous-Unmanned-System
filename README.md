@@ -5,70 +5,6 @@ A from-scratch flight controller firmware stack for the STM32H743, built without
 > **Project status: core firmware infrastructure complete, drivers in progress.** See [Implementation status](#implementation-status) below for exactly what runs today versus what's stubbed.
 
 ---
-
-## Why this exists
-
-This project was built to mirror the firmware architecture used in production UAS and avionics systems — the kind of concept-to-flight ownership that companies like Anduril, Shield AI, and Joby Aviation hire embedded engineers to do. It deliberately avoids reaching for off-the-shelf flight stacks (PX4, ArduPilot, Betaflight) in favor of writing the scheduler, sensor fusion, and control architecture from first principles, because that is where the actual engineering judgment lives.
-
-The companion ground station (HTML/JS GCS with a counter-UAS RF detection panel and live mission planning) and the FPGA/SDR telemetry link this firmware is designed to pair with live in separate repos — see [Related work](#related-work).
-
----
-
-## Architecture
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│  STM32H743 — bare-metal, no RTOS                                 │
-│                                                                   │
-│  SysTick ISR (1 kHz)  ──sets pending flags──▶  superloop          │
-│         │                                          │              │
-│         │                                   watchdog_task_start() │
-│         │                                          ▼              │
-│         │                                    task.fn() runs       │
-│         │                                          │              │
-│         ▼                                   watchdog_task_end()   │
-│  IWDG (hardware) ◀── kicked once per loop pass, never inside a    │
-│  TIM7 deadman timer ── fires independently if a task hangs        │
-│                                                                   │
-│  ┌───────────────┐   ┌────────────────┐   ┌────────────────────┐ │
-│  │ 1 kHz tier     │   │ 10 Hz tier     │   │ Flight mode FSM     │ │
-│  │ IMU → AHRS     │──▶│ GPS/baro/batt  │──▶│ STABILIZE→ALT_HOLD  │ │
-│  │ → rate PID     │   │ → position PID │   │ →LOITER→RTL→FAILSAFE│ │
-│  └───────────────┘   └────────────────┘   └────────────────────┘ │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-Sensor fusion runs as two cooperating filters: a 9-DOF Madgwick quaternion filter (gyro + accelerometer + magnetometer) for attitude at 1 kHz, feeding a cascaded rate → attitude → position PID stack. See [`docs/sensor-fusion.md`](docs/sensor-fusion.md) *(coming soon)* for the full filter-per-sensor breakdown.
-
----
-
-## Implementation status
-
-| Module | Status | Notes |
-|---|---|---|
-| `scheduler.c` / `scheduler.h` | ✅ Complete | Cooperative SysTick dispatcher, per-task execution profiling via DWT cycle counter, configurable task table |
-| `watchdog.c` | ✅ Complete | Two-layer fault detection: IWDG hardware reset + TIM7 deadman timer that identifies *which* task hung, surviving the reset via RTC backup register |
-| `ahrs.c` / `ahrs.h` | ✅ Complete | 9-DOF Madgwick filter — gyro + accel + magnetometer, online gyro bias estimation, hard-iron mag calibration routine |
-| `mag.c` / `mag.h` | ✅ Complete | IST8310 magnetometer SPI driver |
-| `flight_mode.c` / `flight_mode.h` | ✅ Complete | Flight mode FSM — STABILIZE, ALT_HOLD, LOITER, AUTO, RTL, LAND, FAILSAFE, with automatic graceful degradation when a mode's required sensors become unavailable |
-| `task_ahrs.c` | ✅ Complete | Scheduler glue connecting IMU/mag drivers to the AHRS update task |
-| `main.c` | ✅ Complete | Boot sequence, clock config, peripheral init, watchdog diagnostic readback |
-| `imu.c` | 🚧 Not yet written | ICM-42688-P SPI DMA driver — **verify your specific breakout exposes SPI**, not all do |
-| `pid.c` | 🚧 Not yet written | Cascaded rate/attitude/position PID, motor mix matrix |
-| `baro.c` | 🚧 Not yet written | BMP388 driver + altitude IIR filter |
-| `gps.c` | 🚧 Not yet written | u-blox M10 UBX parser, NED conversion |
-| `battery.c` | 🚧 Not yet written | ADC voltage/current monitoring, mAh integration |
-| `mavlink.c` | 🚧 Not yet written | MAVLink 2.0 telemetry TX/RX, command parsing |
-| `dshot.c` | 🚧 Not yet written | DShot600 ESC output via TIM1 DMA |
-| `mission.c` | 🚧 Not yet written | Waypoint sequencing for AUTO mode |
-| `param.c` | 🚧 Not yet written | Flash-backed parameter store |
-| `failsafe.c` | 🚧 Not yet written | Pre-arm checks, link-loss detection, arm/disarm gating |
-| `blackbox.c` | 🚧 Not yet written | SD card flight data logging |
-
-`task_stubs.c` provides a harmless no-op for every task callback not yet implemented, so the scheduler core can be flashed and verified on real hardware today, independent of the rest of the stack.
-
----
-
 ## Design decisions worth knowing about
 
 **Why a bare-metal scheduler instead of FreeRTOS.** A cooperative SysTick dispatcher gives full control over execution order and eliminates an entire class of priority-inversion and context-switch-jitter bugs that make PID tuning miserable to debug. Every task runs to completion, in a fixed table order, with execution time measured via the DWT cycle counter — you can put an oscilloscope on a single GPIO and see exactly what the CPU is doing at any microsecond. An RTOS earns its complexity when you have many independent, asynchronous workloads; a flight controller's control loops are not that — they are a small number of strictly periodic tasks with hard deadlines, which is exactly what a cooperative scheduler is built for.
@@ -137,6 +73,68 @@ This is firmware for a system that can spin propellers at lethal speed. Before c
 - Verify the watchdog actually resets the MCU within the configured timeout by deliberately hanging a test task.
 - Confirm failsafe triggers correctly with the radio link physically disconnected before any flight test.
 
-## License
 
-MIT — see [LICENSE](LICENSE).
+
+## Why this exists
+
+This project was built to mirror the firmware architecture used in production UAS and avionics systems — the kind of concept-to-flight ownership that companies like Anduril, Shield AI, and Joby Aviation hire embedded engineers to do. It deliberately avoids reaching for off-the-shelf flight stacks (PX4, ArduPilot, Betaflight) in favor of writing the scheduler, sensor fusion, and control architecture from first principles, because that is where the actual engineering judgment lives.
+
+The companion ground station (HTML/JS GCS with a counter-UAS RF detection panel and live mission planning) and the FPGA/SDR telemetry link this firmware is designed to pair with live in separate repos — see [Related work](#related-work).
+
+---
+
+## Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  STM32H743 — bare-metal, no RTOS                                 │
+│                                                                   │
+│  SysTick ISR (1 kHz)  ──sets pending flags──▶  superloop          │
+│         │                                          │              │
+│         │                                   watchdog_task_start() │
+│         │                                          ▼              │
+│         │                                    task.fn() runs       │
+│         │                                          │              │
+│         ▼                                   watchdog_task_end()   │
+│  IWDG (hardware) ◀── kicked once per loop pass, never inside a    │
+│  TIM7 deadman timer ── fires independently if a task hangs        │
+│                                                                   │
+│  ┌───────────────┐   ┌────────────────┐   ┌────────────────────┐ │
+│  │ 1 kHz tier     │   │ 10 Hz tier     │   │ Flight mode FSM     │ │
+│  │ IMU → AHRS     │──▶│ GPS/baro/batt  │──▶│ STABILIZE→ALT_HOLD  │ │
+│  │ → rate PID     │   │ → position PID │   │ →LOITER→RTL→FAILSAFE│ │
+│  └───────────────┘   └────────────────┘   └────────────────────┘ │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+Sensor fusion runs as two cooperating filters: a 9-DOF Madgwick quaternion filter (gyro + accelerometer + magnetometer) for attitude at 1 kHz, feeding a cascaded rate → attitude → position PID stack. See [`docs/sensor-fusion.md`](docs/sensor-fusion.md) *(coming soon)* for the full filter-per-sensor breakdown.
+
+---
+
+## Implementation status
+
+| Module | Status | Notes |
+|---|---|---|
+| `scheduler.c` / `scheduler.h` | ✅ Complete | Cooperative SysTick dispatcher, per-task execution profiling via DWT cycle counter, configurable task table |
+| `watchdog.c` | ✅ Complete | Two-layer fault detection: IWDG hardware reset + TIM7 deadman timer that identifies *which* task hung, surviving the reset via RTC backup register |
+| `ahrs.c` | 🚧 Not yet written  | 9-DOF Madgwick filter — gyro + accel + magnetometer, online gyro bias estimation, hard-iron mag calibration routine |
+| `mag.c` | 🚧 Not yet written  | IST8310 magnetometer SPI driver |
+| `flight_mode.c` 🚧 Not yet written  | Flight mode FSM — STABILIZE, ALT_HOLD, LOITER, AUTO, RTL, LAND, FAILSAFE, with automatic graceful degradation when a mode's required sensors become unavailable |
+| `task_sensorfusion.c` | 🚧 Not yet written | Scheduler glue connecting IMU/mag drivers to the AHRS update task |
+| `main.c` | ✅ Complete | Boot sequence, clock config, peripheral init, watchdog diagnostic readback |
+| `imu.c` | 🚧 Not yet written | ICM-42688-P SPI DMA driver — **verify your specific breakout exposes SPI**, not all do |
+| `pid.c` | 🚧 Not yet written | Cascaded rate/attitude/position PID, motor mix matrix |
+| `baro.c` | 🚧 Not yet written | BMP388 driver + altitude IIR filter |
+| `gps.c` | 🚧 Not yet written | u-blox M10 UBX parser, NED conversion |
+| `battery.c` | 🚧 Not yet written | ADC voltage/current monitoring, mAh integration |
+| `mavlink.c` | 🚧 Not yet written | MAVLink 2.0 telemetry TX/RX, command parsing |
+| `dshot.c` | 🚧 Not yet written | DShot600 ESC output via TIM1 DMA |
+| `mission.c` | 🚧 Not yet written | Waypoint sequencing for AUTO mode |
+| `param.c` | 🚧 Not yet written | Flash-backed parameter store |
+| `failsafe.c` | 🚧 Not yet written | Pre-arm checks, link-loss detection, arm/disarm gating |
+| `blackbox.c` | 🚧 Not yet written | SD card flight data logging |
+
+`task_stubs.c` provides a harmless no-op for every task callback not yet implemented, so the scheduler core can be flashed and verified on real hardware today, independent of the rest of the stack.
+
+---
+
