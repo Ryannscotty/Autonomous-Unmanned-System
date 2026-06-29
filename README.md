@@ -71,13 +71,15 @@ Sensor fusion runs as two cooperating filters: a 9-DOF Madgwick quaternion filte
 ## Related work
 
 - **Ground control station** — HTML/JS GCS with live MAVLink telemetry, mission planning with real tile-map waypoints response panel. *(link to repo)*
-
+🚧 Not yet written
 - **SDR telemetry link** — GNU Radio flowgraph for the ADALM-PLUTO ground station: bridging to MAVLink over a local TCP socket. *(link to repo)*
-
+🚧 Not yet written
 - **FPGA Video Feed link** - Custom Lattice MACHXO3LF FPGA board integrated with Sony IMX219 camera and RF Communication downlink *(link to repo)*
-
+🚧 Not yet written
 - **V4L2 Logitech C270 camera driver with OpenCV object detection integration** - using a Logitech C270 webcam to interface with a jetson nano over V4L2 camera driver running YOLO object detection algorithm. *(link to repo)*  
-
+🚧 in progress
+- **Flight Controller PCB** - custom flight controller for UAS quadracopter drone. *(link to repo)*
+  🚧 in progress
 ---
 ##  Scheduler Architecture
 ```
