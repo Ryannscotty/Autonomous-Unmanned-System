@@ -1,0 +1,2 @@
+/usr/bin/ar qc libscheduler_subsystem.a CMakeFiles/scheduler_subsystem.dir/scheduler/scheduler.c.o
+/usr/bin/ranlib libscheduler_subsystem.a
