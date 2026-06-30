@@ -64,8 +64,12 @@ Sensor fusion runs as two cooperating filters: a 9-DOF Madgwick quaternion filte
 🚧 Not yet written
 - **FPGA Video Feed link** - Custom Lattice MACHXO3LF FPGA board integrated with Sony IMX219 camera and RF Communication downlink *(link to repo)*
 🚧 Not yet written
-- **Custom V4L2 Camera Driver with YOLOv8 TensorRT Object detection** - using a Logitech C270 webcam to interface with a jetson nano over V4L2 camera driver running YOLOv8 + TensorRT object detection algorithm. *(link to repo)*  
-🚧 in progress
+- **Custom V4L2 Camera Driver with YOLOv8 TensorRT Object detection** - using a Logitech C270 webcam to interface with a jetson nano over V4L2 camera driver running YOLOv8 + TensorRT object detection algorithm.
+
+    https://github.com/Ryannscotty/Custom-V4L2-Camera-Driver-with-YOLOv8-TensorRT-Object-detection
+
+     🚧 in progress
+
 ---
 ##  Scheduler Architecture
 ```
