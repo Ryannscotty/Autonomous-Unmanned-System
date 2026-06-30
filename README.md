@@ -101,7 +101,7 @@ Sensor fusion runs as two cooperating filters: a 9-DOF Madgwick quaternion filte
 | `watchdog.c` | ✅ Complete | Two-layer fault detection: IWDG hardware reset + TIM7 deadman timer that identifies *which* task hung, surviving the reset via RTC backup register |
 | `ahrs.c` | 🚧 Not yet written  | 9-DOF Madgwick filter — gyro + accel + magnetometer, online gyro bias estimation, hard-iron mag calibration routine |
 | `mag.c` | 🚧 Not yet written  | magnetometer SPI driver |
-| `flight_mode.c` 🚧 Not yet written  | Flight mode FSM — STABILIZE, ALT_HOLD, LOITER, AUTO, RTL, LAND, FAILSAFE, with automatic graceful degradation when a mode's required sensors become unavailable |
+| `flight_mode.c`| 🚧 Not yet written  | Flight mode FSM — STABILIZE, ALT_HOLD, LOITER, AUTO, RTL, LAND, FAILSAFE, with automatic graceful degradation when a mode's required sensors become unavailable |
 | `task_sensorfusion.c` | 🚧 Not yet written | Scheduler glue connecting IMU/mag drivers to the AHRS update task |
 | `main.c` | ✅ Complete | Boot sequence, clock config, peripheral init, watchdog diagnostic readback |
 | `imu.c` | 🚧 Not yet written | SPI DMA driver + IIR filter |
