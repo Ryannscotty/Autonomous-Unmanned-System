@@ -37,9 +37,5 @@
 #define MCO2_prescaler_DIV_BY_14 14U   
 #define MCO2_prescaler_DIV_BY_15 15U  
 void systemClockConfig_480Mhz(void);
-void DebugLed(void);
-void sysTickConfig_1KHz(void);
-void SysTick_Handler(void);
-void delay_ms(uint32_t ms);
 void testclocks(int MCO1_prescale_val, int MCO2_prescale_val);
 #endif

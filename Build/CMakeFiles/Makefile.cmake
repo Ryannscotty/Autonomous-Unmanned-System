@@ -11,6 +11,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.22.1/CMakeCCompiler.cmake"
   "CMakeFiles/3.22.1/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.22.1/CMakeSystem.cmake"
+  "CMakeFiles/VerifyGlobs.cmake"
+  "CMakeFiles/cmake.verify_globs"
   "../CMakeLists.txt"
   "/usr/share/cmake-3.22/Modules/CMakeASMInformation.cmake"
   "/usr/share/cmake-3.22/Modules/CMakeCInformation.cmake"
@@ -46,8 +48,9 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/scheduler_subsystem.dir/DependInfo.cmake"
-  "CMakeFiles/UNITTEST_subsystem.dir/DependInfo.cmake"
-  "CMakeFiles/periph_subsystem.dir/DependInfo.cmake"
+  "CMakeFiles/clock_library.dir/DependInfo.cmake"
+  "CMakeFiles/periph_library.dir/DependInfo.cmake"
+  "CMakeFiles/scheduler_library.dir/DependInfo.cmake"
+  "CMakeFiles/UNITTEST_library.dir/DependInfo.cmake"
   "CMakeFiles/FlightController_FW.elf.dir/DependInfo.cmake"
   )

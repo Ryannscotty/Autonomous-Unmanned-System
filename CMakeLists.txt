@@ -32,35 +32,59 @@ set(ARCH_FLAGS "-mcpu=cortex-m7" "-mthumb" "-mfpu=fpv5-d16" "-mfloat-abi=hard")
 #)
 # target_compile_options(dsp_subsystem PRIVATE ${ARCH_FLAGS} -Wall -Wextra -O2 -std=c11)
 #target_compile_definitions(dsp_subsystem PRIVATE STM32H723xx)
-#############################################################################################################################
-############################################# 5. Scheduler Subsystem 
-file(GLOB_RECURSE SCHEDULER_SOURCES "scheduler/*.c")
-add_library(scheduler_subsystem STATIC ${SCHEDULER_SOURCES})
-target_include_directories(scheduler_subsystem PUBLIC 
-scheduler
+####################################### Clock Drivers
+file(GLOB_RECURSE CLOCK_SOURCES CONFIGURE_DEPENDS "Clocks/*.c")
+add_library(clock_library STATIC ${CLOCK_SOURCES})
+target_include_directories(clock_library PUBLIC 
 headers
-Drivers/CMSIS/Include
-Drivers/CMSIS/Device/ST/STM32H7xx/Include
+STM32H7/CMSIS/Include
+STM32H7/CMSIS/Device/ST/STM32H7xx/Include
 )
-target_compile_definitions(scheduler_subsystem PRIVATE STM32H723xx)
-target_compile_options(scheduler_subsystem PRIVATE ${ARCH_FLAGS} -Wall -Wextra -O2 -std=c11)
+target_compile_options(clock_library PRIVATE ${ARCH_FLAGS} -Wall -Wextra -O2 -std=c11)
+target_compile_definitions(clock_library PRIVATE STM32H723xx)
+####################################### Peripheral Drivers
+file(GLOB_RECURSE PERIPH_SOURCES CONFIGURE_DEPENDS "PeriphDrivers/*.c")
+add_library(periph_library STATIC ${PERIPH_SOURCES})
+target_include_directories(periph_library PUBLIC 
+headers
+STM32H7/CMSIS/Include
+STM32H7/CMSIS/Device/ST/STM32H7xx/Include
+)
+target_compile_options(periph_library PRIVATE ${ARCH_FLAGS} -Wall -Wextra -O2 -std=c11)
+target_compile_definitions(periph_library PRIVATE STM32H723xx)
+###############################################################################################################################
+############################################################################################################################
+############################################# 5. Scheduler Subsystem 
+file(GLOB_RECURSE SCHEDULER_SOURCES CONFIGURE_DEPENDS "scheduler/*.c")
+add_library(scheduler_library STATIC ${SCHEDULER_SOURCES})
+target_include_directories(scheduler_library PUBLIC 
+headers
+STM32H7/CMSIS/Include
+STM32H7/CMSIS/Device/ST/STM32H7xx/Include
+)
+target_link_libraries(scheduler_library PUBLIC 
+clock_library
+)
+target_compile_definitions(scheduler_library PRIVATE STM32H723xx)
+target_compile_options(scheduler_library PRIVATE ${ARCH_FLAGS} -Wall -Wextra -O2 -std=c11)
 #############################################################################################################################
 ############################################# UNIT TEST  
-file(GLOB_RECURSE UNITTEST_SOURCES "HIL_UNIT_TEST/*.c")
-add_library(UNITTEST_subsystem STATIC ${UNITTEST_SOURCES})
-target_include_directories(UNITTEST_subsystem PUBLIC 
-scheduler
-UNIT_TEST
-Drivers_2
+file(GLOB_RECURSE UNITTEST_SOURCES CONFIGURE_DEPENDS "HIL_UNIT_TEST/*.c")
+add_library(UNITTEST_library STATIC ${UNITTEST_SOURCES})
+target_include_directories(UNITTEST_library PUBLIC 
 headers
-Drivers/CMSIS/Include
-Drivers/CMSIS/Device/ST/STM32H7xx/Include
+STM32H7/CMSIS/Include
+STM32H7/CMSIS/Device/ST/STM32H7xx/Include
 )
-target_compile_definitions(UNITTEST_subsystem PRIVATE STM32H723xx)
-target_compile_options(UNITTEST_subsystem PRIVATE ${ARCH_FLAGS} -Wall -Wextra -O2 -std=c11)
+target_link_libraries(UNITTEST_library PUBLIC 
+clock_library
+scheduler_library
+)
+target_compile_definitions(UNITTEST_library PRIVATE STM32H723xx)
+target_compile_options(UNITTEST_library PRIVATE ${ARCH_FLAGS} -Wall -Wextra -O2 -std=c11)
 #############################################################################################################################
 #################################### 6. Sensors Subsystem (RESTORED)
-# file(GLOB_RECURSE SENSORS_SOURCES "sensors/*.c")
+# file(GLOB_RECURSE SENSORS_SOURCES CONFIGURE_DEPENDS "sensors/*.c")
 # add_library(sensors_subsystem STATIC ${SENSORS_SOURCES})
 # target_include_directories(sensors_subsystem PUBLIC 
 #sensors
@@ -73,20 +97,6 @@ target_compile_options(UNITTEST_subsystem PRIVATE ${ARCH_FLAGS} -Wall -Wextra -O
 #target_compile_definitions(sensors_subsystem PRIVATE STM32H723xx)
 ###############################################################################################################################
 ############################################################################################################################
-###################################### Peripheral Drivers
-file(GLOB_RECURSE PERIPH_SOURCES "Drivers_2/*.c")
-add_library(periph_subsystem STATIC ${PERIPH_SOURCES})
-target_include_directories(periph_subsystem PUBLIC 
-sensors
-Drivers_2
-scheduler
-headers
-Drivers/CMSIS/Include
-Drivers/CMSIS/Device/ST/STM32H7xx/Include
-)
-target_compile_options(periph_subsystem PRIVATE ${ARCH_FLAGS} -Wall -Wextra -O2 -std=c11)
-target_compile_definitions(periph_subsystem PRIVATE STM32H723xx)
-###############################################################################################################################
 # ========================================================================== #
 # MAIN EXECUTABLE CONFIGURATION
 # ========================================================================== #
@@ -113,9 +123,10 @@ target_link_options(${PROJECT_NAME}.elf PRIVATE
 # 11. Link All Compiled Subsystems 
 target_link_libraries(${PROJECT_NAME}.elf PRIVATE
     # dsp_subsystem
-    periph_subsystem
-    scheduler_subsystem
-    UNITTEST_subsystem
+    periph_library
+    scheduler_library
+    UNITTEST_library
+    clock_library
     # sensors_subsystem
 )
 

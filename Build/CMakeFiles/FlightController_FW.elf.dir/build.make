@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW"
+CMAKE_SOURCE_DIR = /home/rscott/Desktop/Flight_Controller
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/Build"
+CMAKE_BINARY_DIR = /home/rscott/Desktop/Flight_Controller/Build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/FlightController_FW.elf.dir/depend.make
@@ -72,43 +72,43 @@ include CMakeFiles/FlightController_FW.elf.dir/flags.make
 CMakeFiles/FlightController_FW.elf.dir/src/main.c.o: CMakeFiles/FlightController_FW.elf.dir/flags.make
 CMakeFiles/FlightController_FW.elf.dir/src/main.c.o: ../src/main.c
 CMakeFiles/FlightController_FW.elf.dir/src/main.c.o: CMakeFiles/FlightController_FW.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/Build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/FlightController_FW.elf.dir/src/main.c.o"
-	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/FlightController_FW.elf.dir/src/main.c.o -MF CMakeFiles/FlightController_FW.elf.dir/src/main.c.o.d -o CMakeFiles/FlightController_FW.elf.dir/src/main.c.o -c "/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/src/main.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/FlightController_FW.elf.dir/src/main.c.o"
+	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/FlightController_FW.elf.dir/src/main.c.o -MF CMakeFiles/FlightController_FW.elf.dir/src/main.c.o.d -o CMakeFiles/FlightController_FW.elf.dir/src/main.c.o -c /home/rscott/Desktop/Flight_Controller/src/main.c
 
 CMakeFiles/FlightController_FW.elf.dir/src/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/FlightController_FW.elf.dir/src/main.c.i"
-	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/src/main.c" > CMakeFiles/FlightController_FW.elf.dir/src/main.c.i
+	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/rscott/Desktop/Flight_Controller/src/main.c > CMakeFiles/FlightController_FW.elf.dir/src/main.c.i
 
 CMakeFiles/FlightController_FW.elf.dir/src/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FlightController_FW.elf.dir/src/main.c.s"
-	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/src/main.c" -o CMakeFiles/FlightController_FW.elf.dir/src/main.c.s
+	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/rscott/Desktop/Flight_Controller/src/main.c -o CMakeFiles/FlightController_FW.elf.dir/src/main.c.s
 
 CMakeFiles/FlightController_FW.elf.dir/src/startup_stm32h723xx.s.o: CMakeFiles/FlightController_FW.elf.dir/flags.make
 CMakeFiles/FlightController_FW.elf.dir/src/startup_stm32h723xx.s.o: ../src/startup_stm32h723xx.s
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/Build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building ASM object CMakeFiles/FlightController_FW.elf.dir/src/startup_stm32h723xx.s.o"
-	arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/FlightController_FW.elf.dir/src/startup_stm32h723xx.s.o -c "/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/src/startup_stm32h723xx.s"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building ASM object CMakeFiles/FlightController_FW.elf.dir/src/startup_stm32h723xx.s.o"
+	arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/FlightController_FW.elf.dir/src/startup_stm32h723xx.s.o -c /home/rscott/Desktop/Flight_Controller/src/startup_stm32h723xx.s
 
 CMakeFiles/FlightController_FW.elf.dir/src/startup_stm32h723xx.s.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing ASM source to CMakeFiles/FlightController_FW.elf.dir/src/startup_stm32h723xx.s.i"
-	arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E "/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/src/startup_stm32h723xx.s" > CMakeFiles/FlightController_FW.elf.dir/src/startup_stm32h723xx.s.i
+	arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/rscott/Desktop/Flight_Controller/src/startup_stm32h723xx.s > CMakeFiles/FlightController_FW.elf.dir/src/startup_stm32h723xx.s.i
 
 CMakeFiles/FlightController_FW.elf.dir/src/startup_stm32h723xx.s.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling ASM source to assembly CMakeFiles/FlightController_FW.elf.dir/src/startup_stm32h723xx.s.s"
-	arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S "/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/src/startup_stm32h723xx.s" -o CMakeFiles/FlightController_FW.elf.dir/src/startup_stm32h723xx.s.s
+	arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/rscott/Desktop/Flight_Controller/src/startup_stm32h723xx.s -o CMakeFiles/FlightController_FW.elf.dir/src/startup_stm32h723xx.s.s
 
 CMakeFiles/FlightController_FW.elf.dir/src/system_stm32h7xx.c.o: CMakeFiles/FlightController_FW.elf.dir/flags.make
 CMakeFiles/FlightController_FW.elf.dir/src/system_stm32h7xx.c.o: ../src/system_stm32h7xx.c
 CMakeFiles/FlightController_FW.elf.dir/src/system_stm32h7xx.c.o: CMakeFiles/FlightController_FW.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/Build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/FlightController_FW.elf.dir/src/system_stm32h7xx.c.o"
-	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/FlightController_FW.elf.dir/src/system_stm32h7xx.c.o -MF CMakeFiles/FlightController_FW.elf.dir/src/system_stm32h7xx.c.o.d -o CMakeFiles/FlightController_FW.elf.dir/src/system_stm32h7xx.c.o -c "/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/src/system_stm32h7xx.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/FlightController_FW.elf.dir/src/system_stm32h7xx.c.o"
+	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/FlightController_FW.elf.dir/src/system_stm32h7xx.c.o -MF CMakeFiles/FlightController_FW.elf.dir/src/system_stm32h7xx.c.o.d -o CMakeFiles/FlightController_FW.elf.dir/src/system_stm32h7xx.c.o -c /home/rscott/Desktop/Flight_Controller/src/system_stm32h7xx.c
 
 CMakeFiles/FlightController_FW.elf.dir/src/system_stm32h7xx.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/FlightController_FW.elf.dir/src/system_stm32h7xx.c.i"
-	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/src/system_stm32h7xx.c" > CMakeFiles/FlightController_FW.elf.dir/src/system_stm32h7xx.c.i
+	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/rscott/Desktop/Flight_Controller/src/system_stm32h7xx.c > CMakeFiles/FlightController_FW.elf.dir/src/system_stm32h7xx.c.i
 
 CMakeFiles/FlightController_FW.elf.dir/src/system_stm32h7xx.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FlightController_FW.elf.dir/src/system_stm32h7xx.c.s"
-	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/src/system_stm32h7xx.c" -o CMakeFiles/FlightController_FW.elf.dir/src/system_stm32h7xx.c.s
+	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/rscott/Desktop/Flight_Controller/src/system_stm32h7xx.c -o CMakeFiles/FlightController_FW.elf.dir/src/system_stm32h7xx.c.s
 
 # Object files for target FlightController_FW.elf
 FlightController_FW_elf_OBJECTS = \
@@ -123,14 +123,17 @@ FlightController_FW.elf: CMakeFiles/FlightController_FW.elf.dir/src/main.c.o
 FlightController_FW.elf: CMakeFiles/FlightController_FW.elf.dir/src/startup_stm32h723xx.s.o
 FlightController_FW.elf: CMakeFiles/FlightController_FW.elf.dir/src/system_stm32h7xx.c.o
 FlightController_FW.elf: CMakeFiles/FlightController_FW.elf.dir/build.make
-FlightController_FW.elf: libperiph_subsystem.a
-FlightController_FW.elf: libscheduler_subsystem.a
-FlightController_FW.elf: libUNITTEST_subsystem.a
+FlightController_FW.elf: libperiph_library.a
+FlightController_FW.elf: libscheduler_library.a
+FlightController_FW.elf: libUNITTEST_library.a
+FlightController_FW.elf: libclock_library.a
+FlightController_FW.elf: libscheduler_library.a
+FlightController_FW.elf: libclock_library.a
 FlightController_FW.elf: CMakeFiles/FlightController_FW.elf.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/Build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable FlightController_FW.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable FlightController_FW.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/FlightController_FW.elf.dir/link.txt --verbose=$(VERBOSE)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating flashable binary image at project root: FlightController_FW.bin"
-	arm-none-eabi-objcopy -O binary FlightController_FW.elf /home/rscott/Desktop/Personal\ Projects/FlightController/FlightController_FW/FlightController_FW.bin
+	arm-none-eabi-objcopy -O binary FlightController_FW.elf /home/rscott/Desktop/Flight_Controller/FlightController_FW.bin
 
 # Rule to build all files generated by this target.
 CMakeFiles/FlightController_FW.elf.dir/build: FlightController_FW.elf
@@ -141,6 +144,6 @@ CMakeFiles/FlightController_FW.elf.dir/clean:
 .PHONY : CMakeFiles/FlightController_FW.elf.dir/clean
 
 CMakeFiles/FlightController_FW.elf.dir/depend:
-	cd "/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/Build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW" "/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW" "/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/Build" "/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/Build" "/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/Build/CMakeFiles/FlightController_FW.elf.dir/DependInfo.cmake" --color=$(COLOR)
+	cd /home/rscott/Desktop/Flight_Controller/Build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rscott/Desktop/Flight_Controller /home/rscott/Desktop/Flight_Controller /home/rscott/Desktop/Flight_Controller/Build /home/rscott/Desktop/Flight_Controller/Build /home/rscott/Desktop/Flight_Controller/Build/CMakeFiles/FlightController_FW.elf.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/FlightController_FW.elf.dir/depend
 

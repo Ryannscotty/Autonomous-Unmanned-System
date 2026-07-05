@@ -3,28 +3,30 @@
 
 CMakeFiles/FlightController_FW.elf.dir/src/main.c.o: ../src/main.c \
   ../headers/stm32h723xx.h \
-  ../Drivers/CMSIS/Include/core_cm7.h \
+  ../STM32H7/CMSIS/Include/core_cm7.h \
   /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
-  ../Drivers/CMSIS/Include/cmsis_version.h \
-  ../Drivers/CMSIS/Include/cmsis_compiler.h \
-  ../Drivers/CMSIS/Include/cmsis_gcc.h \
-  ../Drivers/CMSIS/Include/mpu_armv7.h \
-  ../Drivers/CMSIS/Include/cachel1_armv7.h \
+  ../STM32H7/CMSIS/Include/cmsis_version.h \
+  ../STM32H7/CMSIS/Include/cmsis_compiler.h \
+  ../STM32H7/CMSIS/Include/cmsis_gcc.h \
+  ../STM32H7/CMSIS/Include/mpu_armv7.h \
+  ../STM32H7/CMSIS/Include/cachel1_armv7.h \
   ../headers/system_stm32h7xx.h \
   ../headers/scheduler.h \
+  /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
+  ../headers/HIL_Clock_test.h \
   ../headers/Clocks.h
 
 CMakeFiles/FlightController_FW.elf.dir/src/system_stm32h7xx.c.o: ../src/system_stm32h7xx.c \
-  ../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h \
-  ../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h \
-  ../Drivers/CMSIS/Include/core_cm7.h \
+  ../STM32H7/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h \
+  ../STM32H7/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h \
+  ../STM32H7/CMSIS/Include/core_cm7.h \
   /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
-  ../Drivers/CMSIS/Include/cmsis_version.h \
-  ../Drivers/CMSIS/Include/cmsis_compiler.h \
-  ../Drivers/CMSIS/Include/cmsis_gcc.h \
-  ../Drivers/CMSIS/Include/mpu_armv7.h \
-  ../Drivers/CMSIS/Include/cachel1_armv7.h \
-  ../Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h \
+  ../STM32H7/CMSIS/Include/cmsis_version.h \
+  ../STM32H7/CMSIS/Include/cmsis_compiler.h \
+  ../STM32H7/CMSIS/Include/cmsis_gcc.h \
+  ../STM32H7/CMSIS/Include/mpu_armv7.h \
+  ../STM32H7/CMSIS/Include/cachel1_armv7.h \
+  ../STM32H7/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h \
   /usr/include/newlib/math.h \
   /usr/include/newlib/sys/reent.h \
   /usr/include/newlib/_ansi.h \
@@ -44,23 +46,35 @@ CMakeFiles/FlightController_FW.elf.dir/src/system_stm32h7xx.c.o: ../src/system_s
 
 /usr/include/newlib/sys/cdefs.h:
 
-../Drivers/CMSIS/Include/cachel1_armv7.h:
-
 ../headers/system_stm32h7xx.h:
-
-../Drivers/CMSIS/Include/core_cm7.h:
-
-../Drivers/CMSIS/Include/cmsis_gcc.h:
 
 ../headers/scheduler.h:
 
-../Drivers/CMSIS/Include/cmsis_compiler.h:
+../STM32H7/CMSIS/Include/core_cm7.h:
 
-../src/system_stm32h7xx.c:
+/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h:
 
 ../headers/Clocks.h:
 
+../STM32H7/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h:
+
+../STM32H7/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h:
+
+/usr/include/newlib/machine/ieeefp.h:
+
+../STM32H7/CMSIS/Include/cachel1_armv7.h:
+
+/usr/include/newlib/math.h:
+
+../STM32H7/CMSIS/Include/cmsis_version.h:
+
+../STM32H7/CMSIS/Include/mpu_armv7.h:
+
+/usr/include/newlib/newlib.h:
+
 /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h:
+
+../headers/HIL_Clock_test.h:
 
 /usr/include/newlib/machine/_default_types.h:
 
@@ -68,36 +82,28 @@ CMakeFiles/FlightController_FW.elf.dir/src/system_stm32h7xx.c.o: ../src/system_s
 
 /usr/include/newlib/_newlib_version.h:
 
-../Drivers/CMSIS/Include/cmsis_version.h:
-
 /usr/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h:
 
 ../src/main.c:
 
-../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h:
+../src/system_stm32h7xx.c:
 
-../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h:
-
-../Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h:
-
-/usr/include/newlib/math.h:
+../STM32H7/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h:
 
 /usr/include/newlib/sys/reent.h:
 
-/usr/include/newlib/sys/features.h:
+../STM32H7/CMSIS/Include/cmsis_gcc.h:
 
-../Drivers/CMSIS/Include/mpu_armv7.h:
+/usr/include/newlib/sys/features.h:
 
 /usr/include/newlib/_ansi.h:
 
-/usr/include/newlib/newlib.h:
-
 /usr/include/newlib/sys/config.h:
-
-/usr/include/newlib/machine/ieeefp.h:
 
 /usr/include/newlib/sys/_types.h:
 
-/usr/include/newlib/machine/_types.h:
-
 /usr/include/newlib/sys/lock.h:
+
+../STM32H7/CMSIS/Include/cmsis_compiler.h:
+
+/usr/include/newlib/machine/_types.h:

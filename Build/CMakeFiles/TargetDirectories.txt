@@ -1,6 +1,7 @@
-/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/Build/CMakeFiles/scheduler_subsystem.dir
-/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/Build/CMakeFiles/UNITTEST_subsystem.dir
-/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/Build/CMakeFiles/periph_subsystem.dir
-/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/Build/CMakeFiles/FlightController_FW.elf.dir
-/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/Build/CMakeFiles/edit_cache.dir
-/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/Build/CMakeFiles/rebuild_cache.dir
+/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles/clock_library.dir
+/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles/periph_library.dir
+/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles/scheduler_library.dir
+/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles/UNITTEST_library.dir
+/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles/FlightController_FW.elf.dir
+/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles/edit_cache.dir
+/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles/rebuild_cache.dir

@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW"
+CMAKE_SOURCE_DIR = /home/rscott/Desktop/Flight_Controller
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/Build"
+CMAKE_BINARY_DIR = /home/rscott/Desktop/Flight_Controller/Build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/Build/CMakeFiles" "/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/Build//CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rscott/Desktop/Flight_Controller/Build/CMakeFiles /home/rscott/Desktop/Flight_Controller/Build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/rscott/Desktop/Personal Projects/FlightController/FlightController_FW/Build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rscott/Desktop/Flight_Controller/Build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -113,47 +113,61 @@ preinstall/fast:
 
 # clear depends
 depend:
+	$(CMAKE_COMMAND) -P /home/rscott/Desktop/Flight_Controller/Build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named scheduler_subsystem
+# Target rules for targets named clock_library
 
 # Build rule for target.
-scheduler_subsystem: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 scheduler_subsystem
-.PHONY : scheduler_subsystem
+clock_library: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 clock_library
+.PHONY : clock_library
 
 # fast build rule for target.
-scheduler_subsystem/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/scheduler_subsystem.dir/build.make CMakeFiles/scheduler_subsystem.dir/build
-.PHONY : scheduler_subsystem/fast
+clock_library/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/clock_library.dir/build.make CMakeFiles/clock_library.dir/build
+.PHONY : clock_library/fast
 
 #=============================================================================
-# Target rules for targets named UNITTEST_subsystem
+# Target rules for targets named periph_library
 
 # Build rule for target.
-UNITTEST_subsystem: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 UNITTEST_subsystem
-.PHONY : UNITTEST_subsystem
+periph_library: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 periph_library
+.PHONY : periph_library
 
 # fast build rule for target.
-UNITTEST_subsystem/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UNITTEST_subsystem.dir/build.make CMakeFiles/UNITTEST_subsystem.dir/build
-.PHONY : UNITTEST_subsystem/fast
+periph_library/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/periph_library.dir/build.make CMakeFiles/periph_library.dir/build
+.PHONY : periph_library/fast
 
 #=============================================================================
-# Target rules for targets named periph_subsystem
+# Target rules for targets named scheduler_library
 
 # Build rule for target.
-periph_subsystem: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 periph_subsystem
-.PHONY : periph_subsystem
+scheduler_library: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 scheduler_library
+.PHONY : scheduler_library
 
 # fast build rule for target.
-periph_subsystem/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/periph_subsystem.dir/build.make CMakeFiles/periph_subsystem.dir/build
-.PHONY : periph_subsystem/fast
+scheduler_library/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/scheduler_library.dir/build.make CMakeFiles/scheduler_library.dir/build
+.PHONY : scheduler_library/fast
+
+#=============================================================================
+# Target rules for targets named UNITTEST_library
+
+# Build rule for target.
+UNITTEST_library: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 UNITTEST_library
+.PHONY : UNITTEST_library
+
+# fast build rule for target.
+UNITTEST_library/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UNITTEST_library.dir/build.make CMakeFiles/UNITTEST_library.dir/build
+.PHONY : UNITTEST_library/fast
 
 #=============================================================================
 # Target rules for targets named FlightController_FW.elf
@@ -168,84 +182,36 @@ FlightController_FW.elf/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/FlightController_FW.elf.dir/build.make CMakeFiles/FlightController_FW.elf.dir/build
 .PHONY : FlightController_FW.elf/fast
 
-Drivers_2/Clocks.o: Drivers_2/Clocks.c.o
-.PHONY : Drivers_2/Clocks.o
+Clocks/Clocks.o: Clocks/Clocks.c.o
+.PHONY : Clocks/Clocks.o
 
 # target to build an object file
-Drivers_2/Clocks.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/periph_subsystem.dir/build.make CMakeFiles/periph_subsystem.dir/Drivers_2/Clocks.c.o
-.PHONY : Drivers_2/Clocks.c.o
+Clocks/Clocks.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/clock_library.dir/build.make CMakeFiles/clock_library.dir/Clocks/Clocks.c.o
+.PHONY : Clocks/Clocks.c.o
 
-Drivers_2/Clocks.i: Drivers_2/Clocks.c.i
-.PHONY : Drivers_2/Clocks.i
-
-# target to preprocess a source file
-Drivers_2/Clocks.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/periph_subsystem.dir/build.make CMakeFiles/periph_subsystem.dir/Drivers_2/Clocks.c.i
-.PHONY : Drivers_2/Clocks.c.i
-
-Drivers_2/Clocks.s: Drivers_2/Clocks.c.s
-.PHONY : Drivers_2/Clocks.s
-
-# target to generate assembly for a file
-Drivers_2/Clocks.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/periph_subsystem.dir/build.make CMakeFiles/periph_subsystem.dir/Drivers_2/Clocks.c.s
-.PHONY : Drivers_2/Clocks.c.s
-
-Drivers_2/I2C.o: Drivers_2/I2C.c.o
-.PHONY : Drivers_2/I2C.o
-
-# target to build an object file
-Drivers_2/I2C.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/periph_subsystem.dir/build.make CMakeFiles/periph_subsystem.dir/Drivers_2/I2C.c.o
-.PHONY : Drivers_2/I2C.c.o
-
-Drivers_2/I2C.i: Drivers_2/I2C.c.i
-.PHONY : Drivers_2/I2C.i
+Clocks/Clocks.i: Clocks/Clocks.c.i
+.PHONY : Clocks/Clocks.i
 
 # target to preprocess a source file
-Drivers_2/I2C.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/periph_subsystem.dir/build.make CMakeFiles/periph_subsystem.dir/Drivers_2/I2C.c.i
-.PHONY : Drivers_2/I2C.c.i
+Clocks/Clocks.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/clock_library.dir/build.make CMakeFiles/clock_library.dir/Clocks/Clocks.c.i
+.PHONY : Clocks/Clocks.c.i
 
-Drivers_2/I2C.s: Drivers_2/I2C.c.s
-.PHONY : Drivers_2/I2C.s
-
-# target to generate assembly for a file
-Drivers_2/I2C.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/periph_subsystem.dir/build.make CMakeFiles/periph_subsystem.dir/Drivers_2/I2C.c.s
-.PHONY : Drivers_2/I2C.c.s
-
-Drivers_2/SPI.o: Drivers_2/SPI.c.o
-.PHONY : Drivers_2/SPI.o
-
-# target to build an object file
-Drivers_2/SPI.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/periph_subsystem.dir/build.make CMakeFiles/periph_subsystem.dir/Drivers_2/SPI.c.o
-.PHONY : Drivers_2/SPI.c.o
-
-Drivers_2/SPI.i: Drivers_2/SPI.c.i
-.PHONY : Drivers_2/SPI.i
-
-# target to preprocess a source file
-Drivers_2/SPI.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/periph_subsystem.dir/build.make CMakeFiles/periph_subsystem.dir/Drivers_2/SPI.c.i
-.PHONY : Drivers_2/SPI.c.i
-
-Drivers_2/SPI.s: Drivers_2/SPI.c.s
-.PHONY : Drivers_2/SPI.s
+Clocks/Clocks.s: Clocks/Clocks.c.s
+.PHONY : Clocks/Clocks.s
 
 # target to generate assembly for a file
-Drivers_2/SPI.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/periph_subsystem.dir/build.make CMakeFiles/periph_subsystem.dir/Drivers_2/SPI.c.s
-.PHONY : Drivers_2/SPI.c.s
+Clocks/Clocks.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/clock_library.dir/build.make CMakeFiles/clock_library.dir/Clocks/Clocks.c.s
+.PHONY : Clocks/Clocks.c.s
 
 HIL_UNIT_TEST/HIL_Clock_test.o: HIL_UNIT_TEST/HIL_Clock_test.c.o
 .PHONY : HIL_UNIT_TEST/HIL_Clock_test.o
 
 # target to build an object file
 HIL_UNIT_TEST/HIL_Clock_test.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UNITTEST_subsystem.dir/build.make CMakeFiles/UNITTEST_subsystem.dir/HIL_UNIT_TEST/HIL_Clock_test.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UNITTEST_library.dir/build.make CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/HIL_Clock_test.c.o
 .PHONY : HIL_UNIT_TEST/HIL_Clock_test.c.o
 
 HIL_UNIT_TEST/HIL_Clock_test.i: HIL_UNIT_TEST/HIL_Clock_test.c.i
@@ -253,7 +219,7 @@ HIL_UNIT_TEST/HIL_Clock_test.i: HIL_UNIT_TEST/HIL_Clock_test.c.i
 
 # target to preprocess a source file
 HIL_UNIT_TEST/HIL_Clock_test.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UNITTEST_subsystem.dir/build.make CMakeFiles/UNITTEST_subsystem.dir/HIL_UNIT_TEST/HIL_Clock_test.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UNITTEST_library.dir/build.make CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/HIL_Clock_test.c.i
 .PHONY : HIL_UNIT_TEST/HIL_Clock_test.c.i
 
 HIL_UNIT_TEST/HIL_Clock_test.s: HIL_UNIT_TEST/HIL_Clock_test.c.s
@@ -261,15 +227,63 @@ HIL_UNIT_TEST/HIL_Clock_test.s: HIL_UNIT_TEST/HIL_Clock_test.c.s
 
 # target to generate assembly for a file
 HIL_UNIT_TEST/HIL_Clock_test.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UNITTEST_subsystem.dir/build.make CMakeFiles/UNITTEST_subsystem.dir/HIL_UNIT_TEST/HIL_Clock_test.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UNITTEST_library.dir/build.make CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/HIL_Clock_test.c.s
 .PHONY : HIL_UNIT_TEST/HIL_Clock_test.c.s
+
+PeriphDrivers/I2C.o: PeriphDrivers/I2C.c.o
+.PHONY : PeriphDrivers/I2C.o
+
+# target to build an object file
+PeriphDrivers/I2C.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/periph_library.dir/build.make CMakeFiles/periph_library.dir/PeriphDrivers/I2C.c.o
+.PHONY : PeriphDrivers/I2C.c.o
+
+PeriphDrivers/I2C.i: PeriphDrivers/I2C.c.i
+.PHONY : PeriphDrivers/I2C.i
+
+# target to preprocess a source file
+PeriphDrivers/I2C.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/periph_library.dir/build.make CMakeFiles/periph_library.dir/PeriphDrivers/I2C.c.i
+.PHONY : PeriphDrivers/I2C.c.i
+
+PeriphDrivers/I2C.s: PeriphDrivers/I2C.c.s
+.PHONY : PeriphDrivers/I2C.s
+
+# target to generate assembly for a file
+PeriphDrivers/I2C.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/periph_library.dir/build.make CMakeFiles/periph_library.dir/PeriphDrivers/I2C.c.s
+.PHONY : PeriphDrivers/I2C.c.s
+
+PeriphDrivers/SPI.o: PeriphDrivers/SPI.c.o
+.PHONY : PeriphDrivers/SPI.o
+
+# target to build an object file
+PeriphDrivers/SPI.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/periph_library.dir/build.make CMakeFiles/periph_library.dir/PeriphDrivers/SPI.c.o
+.PHONY : PeriphDrivers/SPI.c.o
+
+PeriphDrivers/SPI.i: PeriphDrivers/SPI.c.i
+.PHONY : PeriphDrivers/SPI.i
+
+# target to preprocess a source file
+PeriphDrivers/SPI.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/periph_library.dir/build.make CMakeFiles/periph_library.dir/PeriphDrivers/SPI.c.i
+.PHONY : PeriphDrivers/SPI.c.i
+
+PeriphDrivers/SPI.s: PeriphDrivers/SPI.c.s
+.PHONY : PeriphDrivers/SPI.s
+
+# target to generate assembly for a file
+PeriphDrivers/SPI.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/periph_library.dir/build.make CMakeFiles/periph_library.dir/PeriphDrivers/SPI.c.s
+.PHONY : PeriphDrivers/SPI.c.s
 
 scheduler/scheduler.o: scheduler/scheduler.c.o
 .PHONY : scheduler/scheduler.o
 
 # target to build an object file
 scheduler/scheduler.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/scheduler_subsystem.dir/build.make CMakeFiles/scheduler_subsystem.dir/scheduler/scheduler.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/scheduler_library.dir/build.make CMakeFiles/scheduler_library.dir/scheduler/scheduler.c.o
 .PHONY : scheduler/scheduler.c.o
 
 scheduler/scheduler.i: scheduler/scheduler.c.i
@@ -277,7 +291,7 @@ scheduler/scheduler.i: scheduler/scheduler.c.i
 
 # target to preprocess a source file
 scheduler/scheduler.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/scheduler_subsystem.dir/build.make CMakeFiles/scheduler_subsystem.dir/scheduler/scheduler.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/scheduler_library.dir/build.make CMakeFiles/scheduler_library.dir/scheduler/scheduler.c.i
 .PHONY : scheduler/scheduler.c.i
 
 scheduler/scheduler.s: scheduler/scheduler.c.s
@@ -285,7 +299,7 @@ scheduler/scheduler.s: scheduler/scheduler.c.s
 
 # target to generate assembly for a file
 scheduler/scheduler.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/scheduler_subsystem.dir/build.make CMakeFiles/scheduler_subsystem.dir/scheduler/scheduler.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/scheduler_library.dir/build.make CMakeFiles/scheduler_library.dir/scheduler/scheduler.c.s
 .PHONY : scheduler/scheduler.c.s
 
 src/main.o: src/main.c.o
@@ -353,21 +367,22 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... FlightController_FW.elf"
-	@echo "... UNITTEST_subsystem"
-	@echo "... periph_subsystem"
-	@echo "... scheduler_subsystem"
-	@echo "... Drivers_2/Clocks.o"
-	@echo "... Drivers_2/Clocks.i"
-	@echo "... Drivers_2/Clocks.s"
-	@echo "... Drivers_2/I2C.o"
-	@echo "... Drivers_2/I2C.i"
-	@echo "... Drivers_2/I2C.s"
-	@echo "... Drivers_2/SPI.o"
-	@echo "... Drivers_2/SPI.i"
-	@echo "... Drivers_2/SPI.s"
+	@echo "... UNITTEST_library"
+	@echo "... clock_library"
+	@echo "... periph_library"
+	@echo "... scheduler_library"
+	@echo "... Clocks/Clocks.o"
+	@echo "... Clocks/Clocks.i"
+	@echo "... Clocks/Clocks.s"
 	@echo "... HIL_UNIT_TEST/HIL_Clock_test.o"
 	@echo "... HIL_UNIT_TEST/HIL_Clock_test.i"
 	@echo "... HIL_UNIT_TEST/HIL_Clock_test.s"
+	@echo "... PeriphDrivers/I2C.o"
+	@echo "... PeriphDrivers/I2C.i"
+	@echo "... PeriphDrivers/I2C.s"
+	@echo "... PeriphDrivers/SPI.o"
+	@echo "... PeriphDrivers/SPI.i"
+	@echo "... PeriphDrivers/SPI.s"
 	@echo "... scheduler/scheduler.o"
 	@echo "... scheduler/scheduler.i"
 	@echo "... scheduler/scheduler.s"
@@ -389,6 +404,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
+	$(CMAKE_COMMAND) -P /home/rscott/Desktop/Flight_Controller/Build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

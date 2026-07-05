@@ -6,7 +6,6 @@
 int main(void)
 {
     UT_Cloct_Test();
-    DebugLed();
     while(1)
     {
 
