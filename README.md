@@ -97,8 +97,8 @@ Sensor fusion runs as two cooperating filters: a 9-DOF Madgwick quaternion filte
 
 | Module | Status | Notes |
 |---|---|---|
-| `scheduler.c`| ✅ Complete | Cooperative SysTick dispatcher, per-task execution profiling via DWT cycle counter, configurable task table |
-| `watchdog.c` | ✅ Complete | Two-layer fault detection: IWDG hardware reset + TIM7 deadman timer that identifies *which* task hung, surviving the reset via RTC backup register |
+| `scheduler.c`| 🚧 In Progress | Cooperative SysTick dispatcher, per-task execution profiling via DWT cycle counter, configurable task table |
+| `watchdog.c` | 🚧 In Progress | Two-layer fault detection: IWDG hardware reset + TIM7 deadman timer that identifies *which* task hung, surviving the reset via RTC backup register |
 | `ahrs.c` | 🚧 Not yet written  | 9-DOF Madgwick filter — gyro + accel + magnetometer, online gyro bias estimation, hard-iron mag calibration routine |
 | `mag.c` | 🚧 Not yet written  | magnetometer SPI driver |
 | `flight_mode.c`| 🚧 Not yet written  | Flight mode FSM — STABILIZE, ALT_HOLD, LOITER, AUTO, RTL, LAND, FAILSAFE, with automatic graceful degradation when a mode's required sensors become unavailable |
@@ -113,7 +113,7 @@ Sensor fusion runs as two cooperating filters: a 9-DOF Madgwick quaternion filte
 | `dshot.c` | 🚧 Not yet written | DShot600 ESC output via TIM1 DMA |
 | `mission.c` | 🚧 Not yet written | Waypoint sequencing for AUTO mode |
 | `failsafe.c` | 🚧 Not yet written | Pre-arm checks, link-loss detection, arm/disarm gating |
-| task_stubs.c`| ✅ Complete | provides a harmless no-op for every task callback not yet implemented, so the scheduler core can be flashed and verified on real hardware today, independent of the rest of the stack. |
+| task_stubs.c`| 🚧 In Progress | provides a harmless no-op for every task callback not yet implemented, so the scheduler core can be flashed and verified on real hardware today, independent of the rest of the stack. |
 
 ---
 
