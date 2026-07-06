@@ -83,17 +83,33 @@ CMakeFiles/clock_library.dir/Clocks/Clocks.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/clock_library.dir/Clocks/Clocks.c.s"
 	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/rscott/Desktop/Flight_Controller/Clocks/Clocks.c -o CMakeFiles/clock_library.dir/Clocks/Clocks.c.s
 
+CMakeFiles/clock_library.dir/Clocks/DWT_Clock.c.o: CMakeFiles/clock_library.dir/flags.make
+CMakeFiles/clock_library.dir/Clocks/DWT_Clock.c.o: ../Clocks/DWT_Clock.c
+CMakeFiles/clock_library.dir/Clocks/DWT_Clock.c.o: CMakeFiles/clock_library.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/clock_library.dir/Clocks/DWT_Clock.c.o"
+	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/clock_library.dir/Clocks/DWT_Clock.c.o -MF CMakeFiles/clock_library.dir/Clocks/DWT_Clock.c.o.d -o CMakeFiles/clock_library.dir/Clocks/DWT_Clock.c.o -c /home/rscott/Desktop/Flight_Controller/Clocks/DWT_Clock.c
+
+CMakeFiles/clock_library.dir/Clocks/DWT_Clock.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/clock_library.dir/Clocks/DWT_Clock.c.i"
+	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/rscott/Desktop/Flight_Controller/Clocks/DWT_Clock.c > CMakeFiles/clock_library.dir/Clocks/DWT_Clock.c.i
+
+CMakeFiles/clock_library.dir/Clocks/DWT_Clock.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/clock_library.dir/Clocks/DWT_Clock.c.s"
+	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/rscott/Desktop/Flight_Controller/Clocks/DWT_Clock.c -o CMakeFiles/clock_library.dir/Clocks/DWT_Clock.c.s
+
 # Object files for target clock_library
 clock_library_OBJECTS = \
-"CMakeFiles/clock_library.dir/Clocks/Clocks.c.o"
+"CMakeFiles/clock_library.dir/Clocks/Clocks.c.o" \
+"CMakeFiles/clock_library.dir/Clocks/DWT_Clock.c.o"
 
 # External object files for target clock_library
 clock_library_EXTERNAL_OBJECTS =
 
 libclock_library.a: CMakeFiles/clock_library.dir/Clocks/Clocks.c.o
+libclock_library.a: CMakeFiles/clock_library.dir/Clocks/DWT_Clock.c.o
 libclock_library.a: CMakeFiles/clock_library.dir/build.make
 libclock_library.a: CMakeFiles/clock_library.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libclock_library.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C static library libclock_library.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/clock_library.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/clock_library.dir/link.txt --verbose=$(VERBOSE)
 

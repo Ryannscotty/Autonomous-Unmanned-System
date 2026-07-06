@@ -83,17 +83,33 @@ CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/HIL_Clock_test.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/HIL_Clock_test.c.s"
 	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/rscott/Desktop/Flight_Controller/HIL_UNIT_TEST/HIL_Clock_test.c -o CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/HIL_Clock_test.c.s
 
+CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/Mock_task.c.o: CMakeFiles/UNITTEST_library.dir/flags.make
+CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/Mock_task.c.o: ../HIL_UNIT_TEST/Mock_task.c
+CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/Mock_task.c.o: CMakeFiles/UNITTEST_library.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/Mock_task.c.o"
+	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/Mock_task.c.o -MF CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/Mock_task.c.o.d -o CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/Mock_task.c.o -c /home/rscott/Desktop/Flight_Controller/HIL_UNIT_TEST/Mock_task.c
+
+CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/Mock_task.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/Mock_task.c.i"
+	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/rscott/Desktop/Flight_Controller/HIL_UNIT_TEST/Mock_task.c > CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/Mock_task.c.i
+
+CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/Mock_task.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/Mock_task.c.s"
+	arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/rscott/Desktop/Flight_Controller/HIL_UNIT_TEST/Mock_task.c -o CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/Mock_task.c.s
+
 # Object files for target UNITTEST_library
 UNITTEST_library_OBJECTS = \
-"CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/HIL_Clock_test.c.o"
+"CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/HIL_Clock_test.c.o" \
+"CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/Mock_task.c.o"
 
 # External object files for target UNITTEST_library
 UNITTEST_library_EXTERNAL_OBJECTS =
 
 libUNITTEST_library.a: CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/HIL_Clock_test.c.o
+libUNITTEST_library.a: CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/Mock_task.c.o
 libUNITTEST_library.a: CMakeFiles/UNITTEST_library.dir/build.make
 libUNITTEST_library.a: CMakeFiles/UNITTEST_library.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libUNITTEST_library.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C static library libUNITTEST_library.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/UNITTEST_library.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/UNITTEST_library.dir/link.txt --verbose=$(VERBOSE)
 

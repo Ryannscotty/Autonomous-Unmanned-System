@@ -86,15 +86,15 @@ clean: CMakeFiles/FlightController_FW.elf.dir/clean
 # Target rules for target CMakeFiles/clock_library.dir
 
 # All Build rule for target.
-CMakeFiles/clock_library.dir/all:
+CMakeFiles/clock_library.dir/all: CMakeFiles/scheduler_library.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/clock_library.dir/build.make CMakeFiles/clock_library.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/clock_library.dir/build.make CMakeFiles/clock_library.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles --progress-num=7,8 "Built target clock_library"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles --progress-num=8,9,10 "Built target clock_library"
 .PHONY : CMakeFiles/clock_library.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/clock_library.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rscott/Desktop/Flight_Controller/Build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rscott/Desktop/Flight_Controller/Build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/clock_library.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/rscott/Desktop/Flight_Controller/Build/CMakeFiles 0
 .PHONY : CMakeFiles/clock_library.dir/rule
@@ -115,7 +115,7 @@ CMakeFiles/clock_library.dir/clean:
 CMakeFiles/periph_library.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/periph_library.dir/build.make CMakeFiles/periph_library.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/periph_library.dir/build.make CMakeFiles/periph_library.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles --progress-num=9,10,11 "Built target periph_library"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles --progress-num=11,12,13 "Built target periph_library"
 .PHONY : CMakeFiles/periph_library.dir/all
 
 # Build rule for subdir invocation for target.
@@ -138,15 +138,15 @@ CMakeFiles/periph_library.dir/clean:
 # Target rules for target CMakeFiles/scheduler_library.dir
 
 # All Build rule for target.
-CMakeFiles/scheduler_library.dir/all: CMakeFiles/clock_library.dir/all
+CMakeFiles/scheduler_library.dir/all: CMakeFiles/UNITTEST_library.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/scheduler_library.dir/build.make CMakeFiles/scheduler_library.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/scheduler_library.dir/build.make CMakeFiles/scheduler_library.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles --progress-num=12,13 "Built target scheduler_library"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles --progress-num=14,15 "Built target scheduler_library"
 .PHONY : CMakeFiles/scheduler_library.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/scheduler_library.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rscott/Desktop/Flight_Controller/Build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rscott/Desktop/Flight_Controller/Build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/scheduler_library.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/rscott/Desktop/Flight_Controller/Build/CMakeFiles 0
 .PHONY : CMakeFiles/scheduler_library.dir/rule
@@ -164,16 +164,15 @@ CMakeFiles/scheduler_library.dir/clean:
 # Target rules for target CMakeFiles/UNITTEST_library.dir
 
 # All Build rule for target.
-CMakeFiles/UNITTEST_library.dir/all: CMakeFiles/clock_library.dir/all
-CMakeFiles/UNITTEST_library.dir/all: CMakeFiles/scheduler_library.dir/all
+CMakeFiles/UNITTEST_library.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/UNITTEST_library.dir/build.make CMakeFiles/UNITTEST_library.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/UNITTEST_library.dir/build.make CMakeFiles/UNITTEST_library.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles --progress-num=5,6 "Built target UNITTEST_library"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles --progress-num=5,6,7 "Built target UNITTEST_library"
 .PHONY : CMakeFiles/UNITTEST_library.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/UNITTEST_library.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rscott/Desktop/Flight_Controller/Build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rscott/Desktop/Flight_Controller/Build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/UNITTEST_library.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/rscott/Desktop/Flight_Controller/Build/CMakeFiles 0
 .PHONY : CMakeFiles/UNITTEST_library.dir/rule
@@ -193,8 +192,6 @@ CMakeFiles/UNITTEST_library.dir/clean:
 # All Build rule for target.
 CMakeFiles/FlightController_FW.elf.dir/all: CMakeFiles/clock_library.dir/all
 CMakeFiles/FlightController_FW.elf.dir/all: CMakeFiles/periph_library.dir/all
-CMakeFiles/FlightController_FW.elf.dir/all: CMakeFiles/scheduler_library.dir/all
-CMakeFiles/FlightController_FW.elf.dir/all: CMakeFiles/UNITTEST_library.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/FlightController_FW.elf.dir/build.make CMakeFiles/FlightController_FW.elf.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/FlightController_FW.elf.dir/build.make CMakeFiles/FlightController_FW.elf.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles --progress-num=1,2,3,4 "Built target FlightController_FW.elf"
@@ -202,7 +199,7 @@ CMakeFiles/FlightController_FW.elf.dir/all: CMakeFiles/UNITTEST_library.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/FlightController_FW.elf.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rscott/Desktop/Flight_Controller/Build/CMakeFiles 13
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rscott/Desktop/Flight_Controller/Build/CMakeFiles 15
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/FlightController_FW.elf.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/rscott/Desktop/Flight_Controller/Build/CMakeFiles 0
 .PHONY : CMakeFiles/FlightController_FW.elf.dir/rule

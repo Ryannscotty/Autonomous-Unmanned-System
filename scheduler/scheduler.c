@@ -1,3 +1,4 @@
+#include "DWT_Clock.h"
 #include "stm32h723xx.h"
 #include "scheduler.h"
 #include "Clocks.h"
@@ -13,23 +14,57 @@
 */ 
 
 #ifdef MOCK_LIST
-/*
+#include "mock_task.h"
+
 Scheduler_Tasks SchedulerList[MAX_SCH_CNT] = 
 {
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-};
-*/ 
+    {RX_GCS_PAYLOAD_TASK, "Receive GCS Mission Payload task",40,0,true,0,false,0,0,0,false},
+    {READ_IMU_TASK, "IMU Task", 1, 0, true,0,false,0,0,0,false},
+    {IMU_DSP_TASK, "IMU DSP Task", 1, 0, true,0,false,0,0,0,false},
+    {RUN_PID_TASK, "RUN PID TASK", 1, 0, true,0,false,0,0,0,false},
+    {LOG_SYSTEM_HEALTH_TASK ,"SYS Health Task",20 ,1 ,true,0,false,0,0,0,false},
+    {CHECK_BAT_HEALTH_TASK ,"BAT HEALTH TASK",20 ,1 ,true,0,false,0,0,0,false},
+    {CHECK_COMPASS_TASK ,"COMPASS TASK",10 ,1 ,true,0,false,0,0,0,false},
+    {ATTITUDE_ESTIMATION_TASK ,"ATT ESTI TASK",10 ,1 ,true,0,false,0,0,0,false},
+    {CHECK_GPS_TASK ,"GPS TASK",10,1,true,0,false,0,0,0,false},
+    {POSITION_ESTIMATION_TASK,"POS ESTI TASK",10,1,true,0,false,0,0,0,false},
+    {FAILSAFE_TASK ,"FAILSAFE TASK",10,1,true,0,false,0,0,0,false},
+    {CHECK_WAYPOINT_TASK ,"WAYPOINT TASK",10 ,2,true,0,false,0,0,0,false},
+    {ALTHOLD_TASK ,"ALTHOLD TASK",10,2,true,0,false,0,0,0,false},
+    {POSHOLD_TASK ,"POSHOLD TASK",10,2,true,0,false,0,0,0,false},
+    {GET_Z_AXIS_ACCEL_TASK ," Z-AXIS ACCELEROMETER TASK",2,1,true,0,false,0,0,0,false},
+    {GET_BAROMETER_DATA_TASK ,"BAROMETER TASK",20,2,true,0,false,0,0,0,false},
+    {ALTITUDE_ESTIMATION_TASK ,"ALT ESTI TASK",8,2,true,0,false,0,0,0,false},
+    {TX_TELEMETRY_PAYLOAD_TASK ,"TELEMETRY TASK",4,2,true,0,false,0,0,0,false},
+}; 
 #else
-
+Scheduler_Tasks SchedulerList[MAX_SCH_CNT] = 
+{
+    {RX_GCS_PAYLOAD_TASK, "Receive GCS Mission Payload task",40,0,true,0,false,0,0,0,false},
+    {READ_IMU_TASK, "IMU Task", 1, 0, true,0,false,0,0,0,false},
+    {IMU_DSP_TASK, "IMU DSP Task", 1, 0, true,0,false,0,0,0,false},
+    {RUN_PID_TASK, "RUN PID TASK", 1, 0, true,0,false,0,0,0,false},
+    {LOG_SYSTEM_HEALTH_TASK ,"SYS Health Task",20 ,1 ,true,0,false,0,0,0,false},
+    {CHECK_BAT_HEALTH_TASK ,"BAT HEALTH TASK",20 ,1 ,true,0,false,0,0,0,false},
+    {CHECK_COMPASS_TASK ,"COMPASS TASK",10 ,1 ,true,0,false,0,0,0,false},
+    {ATTITUDE_ESTIMATION_TASK ,"ATT ESTI TASK",10 ,1 ,true,0,false,0,0,0,false},
+    {CHECK_GPS_TASK ,"GPS TASK",10,1,true,0,false,0,0,0,false},
+    {POSITION_ESTIMATION_TASK,"POS ESTI TASK",10,1,true,0,false,0,0,0,false},
+    {FAILSAFE_TASK ,"FAILSAFE TASK",10,1,true,0,false,0,0,0,false},
+    {CHECK_WAYPOINT_TASK ,"WAYPOINT TASK",10 ,2,true,0,false,0,0,0,false},
+    {ALTHOLD_TASK ,"ALTHOLD TASK",10,2,true,0,false,0,0,0,false},
+    {POSHOLD_TASK ,"POSHOLD TASK",10,2,true,0,false,0,0,0,false},
+    {GET_Z_AXIS_ACCEL_TASK ," Z-AXIS ACCELEROMETER TASK",2,1,true,0,false,0,0,0,false},
+    {GET_BAROMETER_DATA_TASK ,"BAROMETER TASK",20,2,true,0,false,0,0,0,false},
+    {ALTITUDE_ESTIMATION_TASK ,"ALT ESTI TASK",8,2,true,0,false,0,0,0,false},
+    {TX_TELEMETRY_PAYLOAD_TASK ,"TELEMETRY TASK",4,2,true,0,false,0,0,0,false},
+}; 
 #endif
+
+
+uint8_t SchedulerList_Length = sizeof(SchedulerList) / sizeof(SchedulerList[0]);
+/* private globals */ 
+static Scheduler_health healthStatus = {0};
 
 /*
  * ===========================================================================
@@ -69,6 +104,13 @@ Scheduler_Tasks SchedulerList[MAX_SCH_CNT] =
  * ===========================================================================
  */
 
+
+uint32_t Scheduler_get_us(void)
+{
+    return (DWT_Cycles() / CORE_MHZ);
+}
+
+
 void sysTickConfig_1KHz(void)
 {
     const uint32_t HCLK_HZ = 240000000U; /* matches HPRE=/2 on 480MHz SYSCLK */
@@ -101,11 +143,88 @@ void DebugLed(void)
  
 void SysTick_Handler(void)
 {
-    msTicks++;
     GPIOF->ODR ^= (1 << 4);
     //printf("ms tick count: %d/n",msTicks);
+
+    uint32_t currentTick = msTicks++;
+    
+    healthStatus.TotalTickTime = currentTick;
+
+    for(uint8_t i = 0; i < SchedulerList_Length; i++)
+    {
+        Scheduler_Tasks *CurrentTask = &SchedulerList[i];
+
+        if(!CurrentTask->isTaskEnabled)
+        {
+            continue;
+        }
+
+        if((uint16_t)(currentTick - CurrentTask->last_tick) >= CurrentTask->taskperiod)
+        {
+            if(CurrentTask->isTaskPending)
+            {
+                /* pervious task has not finished: missed_deadlines*/ 
+                healthStatus.missed_deadlines++;
+            }
+
+            CurrentTask->isTaskPending = true;
+        }
+    }
 }
- 
+
+/* =========================================================================
+ * Superloop dispatcher
+ * =========================================================================
+ *
+ * This function never returns.  Call it at the end of main() after all
+ * peripherals and drivers are initialised.
+ *
+ * Execution model
+ * ───────────────
+ *  Each iteration of the outer while(1):
+ *    1. Toggle the timing GPIO high (oscilloscope measurement point).
+ *    2. Walk the task table in index order.
+ *    3. For each pending task:
+ *         a. Record start cycle count.
+ *         b. Call the task function.
+ *         c. Compute elapsed µs.
+ *         d. Update max_exec_us and overrun counter.
+ *         e. Mark task not pending, update last_tick, increment exec_count.
+ *    4. Toggle the timing GPIO low.
+ *    5. If no task was pending this iteration, execute WFI to save power.
+ *
+ * Overrun handling
+ * ────────────────
+ *  If a task exceeds SCHEDULER_OVERRUN_US the overrun counter increments.
+ *  The task still completes – we don't pre-empt it.  Connect a logic
+ *  analyser to SCHED_TIMING_PIN and filter for pulses longer than your
+ *  budget to catch overruns in flight.
+ */
+
+void Scheduler_Init(void)
+{
+    /*init the DWT counter*/
+    DWT_Init();
+    /* init the Watchdog timers Tim7 deadman & IWDG */ 
+
+    /*initialize SchedulerList variables*/
+    for(uint8_t i = 0; i < SchedulerList_Length; i++)
+    {
+        SchedulerList[i].isTaskPending = false;
+        SchedulerList[i].last_tick = (uint16_t)msTicks;
+        SchedulerList[i].current_ticks = 0;
+        SchedulerList[i].overruns = 0;
+        SchedulerList[i].MaxTaskTime = 0;
+        SchedulerList[i].flaggedstuck = false;
+    }
+    /* stagger initial tick count, so all high-rate tasks don't fire together
+     * on the very first tick.  Offset each by (index * 1) ms so they
+     * naturally spread across the first 16 ms window.*/ 
+    for(uint8_t i = 0; i < SchedulerList_Length; i++)
+    {
+        SchedulerList[i].last_tick = (uint16_t)(msTicks - (i & 0x0F));
+    }
+}
 /* Returns the current millisecond tick count. Rollover-safe when used
  * with subtraction-based timeout comparisons (see note above). */
 uint32_t millis(void)

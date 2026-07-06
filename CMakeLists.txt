@@ -40,6 +40,10 @@ headers
 STM32H7/CMSIS/Include
 STM32H7/CMSIS/Device/ST/STM32H7xx/Include
 )
+target_link_libraries(clock_library PUBLIC 
+scheduler_library
+)
+
 target_compile_options(clock_library PRIVATE ${ARCH_FLAGS} -Wall -Wextra -O2 -std=c11)
 target_compile_definitions(clock_library PRIVATE STM32H723xx)
 ####################################### Peripheral Drivers
@@ -64,6 +68,7 @@ STM32H7/CMSIS/Device/ST/STM32H7xx/Include
 )
 target_link_libraries(scheduler_library PUBLIC 
 clock_library
+UNITTEST_library
 )
 target_compile_definitions(scheduler_library PRIVATE STM32H723xx)
 target_compile_options(scheduler_library PRIVATE ${ARCH_FLAGS} -Wall -Wextra -O2 -std=c11)

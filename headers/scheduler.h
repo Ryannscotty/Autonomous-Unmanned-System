@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-#define MAX_SCH_CNT 8 
+#define MAX_SCH_CNT 18 
 #define MOCK_LIST 1 
 /* 1 tick = 1 ms from SysTick ISR Handler
  * 1 ms = 1000 HZ
@@ -35,9 +35,13 @@ typedef struct
     uint32_t  TotalTickTime;
     uint32_t missed_deadlines;
     uint32_t max_loop_time;
+    const char *currentTaskname; /* must allocate memory on init */ 
+    const char *currentFlightMode; /* must allocate memory on init */ 
 
 }Scheduler_health;
 
+void Scheduler_Init(void);
+uint32_t Scheduler_get_us(void);
 void sysTickConfig_1KHz(void);
 void SysTick_Handler(void);
 void delay_ms(uint32_t ms);

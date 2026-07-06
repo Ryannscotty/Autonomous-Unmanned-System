@@ -206,6 +206,30 @@ Clocks/Clocks.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/clock_library.dir/build.make CMakeFiles/clock_library.dir/Clocks/Clocks.c.s
 .PHONY : Clocks/Clocks.c.s
 
+Clocks/DWT_Clock.o: Clocks/DWT_Clock.c.o
+.PHONY : Clocks/DWT_Clock.o
+
+# target to build an object file
+Clocks/DWT_Clock.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/clock_library.dir/build.make CMakeFiles/clock_library.dir/Clocks/DWT_Clock.c.o
+.PHONY : Clocks/DWT_Clock.c.o
+
+Clocks/DWT_Clock.i: Clocks/DWT_Clock.c.i
+.PHONY : Clocks/DWT_Clock.i
+
+# target to preprocess a source file
+Clocks/DWT_Clock.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/clock_library.dir/build.make CMakeFiles/clock_library.dir/Clocks/DWT_Clock.c.i
+.PHONY : Clocks/DWT_Clock.c.i
+
+Clocks/DWT_Clock.s: Clocks/DWT_Clock.c.s
+.PHONY : Clocks/DWT_Clock.s
+
+# target to generate assembly for a file
+Clocks/DWT_Clock.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/clock_library.dir/build.make CMakeFiles/clock_library.dir/Clocks/DWT_Clock.c.s
+.PHONY : Clocks/DWT_Clock.c.s
+
 HIL_UNIT_TEST/HIL_Clock_test.o: HIL_UNIT_TEST/HIL_Clock_test.c.o
 .PHONY : HIL_UNIT_TEST/HIL_Clock_test.o
 
@@ -229,6 +253,30 @@ HIL_UNIT_TEST/HIL_Clock_test.s: HIL_UNIT_TEST/HIL_Clock_test.c.s
 HIL_UNIT_TEST/HIL_Clock_test.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/UNITTEST_library.dir/build.make CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/HIL_Clock_test.c.s
 .PHONY : HIL_UNIT_TEST/HIL_Clock_test.c.s
+
+HIL_UNIT_TEST/Mock_task.o: HIL_UNIT_TEST/Mock_task.c.o
+.PHONY : HIL_UNIT_TEST/Mock_task.o
+
+# target to build an object file
+HIL_UNIT_TEST/Mock_task.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UNITTEST_library.dir/build.make CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/Mock_task.c.o
+.PHONY : HIL_UNIT_TEST/Mock_task.c.o
+
+HIL_UNIT_TEST/Mock_task.i: HIL_UNIT_TEST/Mock_task.c.i
+.PHONY : HIL_UNIT_TEST/Mock_task.i
+
+# target to preprocess a source file
+HIL_UNIT_TEST/Mock_task.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UNITTEST_library.dir/build.make CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/Mock_task.c.i
+.PHONY : HIL_UNIT_TEST/Mock_task.c.i
+
+HIL_UNIT_TEST/Mock_task.s: HIL_UNIT_TEST/Mock_task.c.s
+.PHONY : HIL_UNIT_TEST/Mock_task.s
+
+# target to generate assembly for a file
+HIL_UNIT_TEST/Mock_task.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UNITTEST_library.dir/build.make CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/Mock_task.c.s
+.PHONY : HIL_UNIT_TEST/Mock_task.c.s
 
 PeriphDrivers/I2C.o: PeriphDrivers/I2C.c.o
 .PHONY : PeriphDrivers/I2C.o
@@ -374,9 +422,15 @@ help:
 	@echo "... Clocks/Clocks.o"
 	@echo "... Clocks/Clocks.i"
 	@echo "... Clocks/Clocks.s"
+	@echo "... Clocks/DWT_Clock.o"
+	@echo "... Clocks/DWT_Clock.i"
+	@echo "... Clocks/DWT_Clock.s"
 	@echo "... HIL_UNIT_TEST/HIL_Clock_test.o"
 	@echo "... HIL_UNIT_TEST/HIL_Clock_test.i"
 	@echo "... HIL_UNIT_TEST/HIL_Clock_test.s"
+	@echo "... HIL_UNIT_TEST/Mock_task.o"
+	@echo "... HIL_UNIT_TEST/Mock_task.i"
+	@echo "... HIL_UNIT_TEST/Mock_task.s"
 	@echo "... PeriphDrivers/I2C.o"
 	@echo "... PeriphDrivers/I2C.i"
 	@echo "... PeriphDrivers/I2C.s"

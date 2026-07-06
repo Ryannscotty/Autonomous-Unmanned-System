@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/rscott/Desktop/Flight_Controller/HIL_UNIT_TEST/HIL_Clock_test.c" "CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/HIL_Clock_test.c.o" "gcc" "CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/HIL_Clock_test.c.o.d"
+  "/home/rscott/Desktop/Flight_Controller/HIL_UNIT_TEST/Mock_task.c" "CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/Mock_task.c.o" "gcc" "CMakeFiles/UNITTEST_library.dir/HIL_UNIT_TEST/Mock_task.c.o.d"
   )
 
 # Targets to which this target links.

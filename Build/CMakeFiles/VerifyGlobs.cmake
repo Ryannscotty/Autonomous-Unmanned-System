@@ -6,23 +6,25 @@ cmake_policy(SET CMP0009 NEW)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/rscott/Desktop/Flight_Controller/Clocks/*.c")
 set(OLD_GLOB
   "/home/rscott/Desktop/Flight_Controller/Clocks/Clocks.c"
+  "/home/rscott/Desktop/Flight_Controller/Clocks/DWT_Clock.c"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
   file(TOUCH_NOCREATE "/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles/cmake.verify_globs")
 endif()
 
-# UNITTEST_SOURCES at CMakeLists.txt:72 (file)
+# UNITTEST_SOURCES at CMakeLists.txt:77 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/rscott/Desktop/Flight_Controller/HIL_UNIT_TEST/*.c")
 set(OLD_GLOB
   "/home/rscott/Desktop/Flight_Controller/HIL_UNIT_TEST/HIL_Clock_test.c"
+  "/home/rscott/Desktop/Flight_Controller/HIL_UNIT_TEST/Mock_task.c"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
   file(TOUCH_NOCREATE "/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles/cmake.verify_globs")
 endif()
 
-# PERIPH_SOURCES at CMakeLists.txt:46 (file)
+# PERIPH_SOURCES at CMakeLists.txt:50 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/rscott/Desktop/Flight_Controller/PeriphDrivers/*.c")
 set(OLD_GLOB
   "/home/rscott/Desktop/Flight_Controller/PeriphDrivers/I2C.c"
@@ -33,7 +35,7 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   file(TOUCH_NOCREATE "/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles/cmake.verify_globs")
 endif()
 
-# SCHEDULER_SOURCES at CMakeLists.txt:58 (file)
+# SCHEDULER_SOURCES at CMakeLists.txt:62 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/rscott/Desktop/Flight_Controller/scheduler/*.c")
 set(OLD_GLOB
   "/home/rscott/Desktop/Flight_Controller/scheduler/scheduler.c"

@@ -128,6 +128,7 @@ FlightController_FW.elf: libscheduler_library.a
 FlightController_FW.elf: libUNITTEST_library.a
 FlightController_FW.elf: libclock_library.a
 FlightController_FW.elf: libscheduler_library.a
+FlightController_FW.elf: libUNITTEST_library.a
 FlightController_FW.elf: libclock_library.a
 FlightController_FW.elf: CMakeFiles/FlightController_FW.elf.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rscott/Desktop/Flight_Controller/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable FlightController_FW.elf"

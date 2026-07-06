@@ -35,6 +35,44 @@ CMakeFiles/clock_library.dir/Clocks/Clocks.c.o: ../Clocks/Clocks.c \
   /usr/include/newlib/sys/stdio.h \
   /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h
 
+CMakeFiles/clock_library.dir/Clocks/DWT_Clock.c.o: ../Clocks/DWT_Clock.c \
+  ../headers/DWT_Clock.h \
+  /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
+  ../headers/stm32h723xx.h \
+  ../STM32H7/CMSIS/Include/core_cm7.h \
+  ../STM32H7/CMSIS/Include/cmsis_version.h \
+  ../STM32H7/CMSIS/Include/cmsis_compiler.h \
+  ../STM32H7/CMSIS/Include/cmsis_gcc.h \
+  ../STM32H7/CMSIS/Include/mpu_armv7.h \
+  ../STM32H7/CMSIS/Include/cachel1_armv7.h \
+  ../headers/system_stm32h7xx.h \
+  ../headers/stm32h723xx.h \
+  /usr/include/newlib/stdio.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/newlib.h \
+  /usr/include/newlib/_newlib_version.h \
+  /usr/include/newlib/sys/config.h \
+  /usr/include/newlib/machine/ieeefp.h \
+  /usr/include/newlib/sys/features.h \
+  /usr/include/newlib/sys/cdefs.h \
+  /usr/include/newlib/machine/_default_types.h \
+  /usr/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h \
+  /usr/include/newlib/sys/reent.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/sys/_types.h \
+  /usr/include/newlib/machine/_types.h \
+  /usr/include/newlib/sys/lock.h \
+  /usr/include/newlib/sys/types.h \
+  /usr/include/newlib/sys/_stdint.h \
+  /usr/include/newlib/sys/_pthreadtypes.h \
+  /usr/include/newlib/machine/types.h \
+  /usr/include/newlib/sys/stdio.h \
+  /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
+  ../headers/Clocks.h
+
+
+../headers/DWT_Clock.h:
 
 /usr/include/newlib/sys/stdio.h:
 
@@ -57,6 +95,8 @@ CMakeFiles/clock_library.dir/Clocks/Clocks.c.o: ../Clocks/Clocks.c \
 /usr/include/newlib/sys/types.h:
 
 /usr/include/newlib/sys/_pthreadtypes.h:
+
+../Clocks/DWT_Clock.c:
 
 ../STM32H7/CMSIS/Include/mpu_armv7.h:
 
